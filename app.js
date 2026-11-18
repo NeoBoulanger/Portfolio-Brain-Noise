@@ -36,7 +36,7 @@ const palettes=[
  {paper:'#f2ebdd',ink:'#1f3a2e',accent:'#e4f542'},
  {paper:'#1f3a2e',ink:'#f2ebdd',accent:'#e4f542'},
  {paper:'#141b3c',ink:'#c9bbf5',accent:'#ff7a2f'},
- {paper:'#c9bbf5',ink:'#141b3c',accent:'#b52a42'},
+ {paper:'#221c35',ink:'#f2ebdd',accent:'#c9bbf5'},
  {paper:'#141b3c',ink:'#f2ebdd',accent:'#e4f542'}
 ];
 let activePalette=-1;
@@ -101,7 +101,7 @@ function applyPalette(position){
  const nearest=palettes[Math.round(position)];for(const id of ['paper','ink','accent'])$(id).value=nearest[id];
 }
 function updateJourney(){
- progress=measureProgress();const stop=Math.round(progress);applyPalette(progress);
+ progress=measureProgress();const stop=Math.round(progress);
  $('progressBar').style.transform='scaleX('+timeline/END+')';
  $('chapterCount').textContent=String(stop+1).padStart(2,'0')+' / 05';
  $('previous').disabled=progress<.02;$('next').disabled=progress>3.98;
@@ -172,7 +172,10 @@ function resize(){
  const dpr=Math.min(devicePixelRatio||1,1.5);renderer.setPixelRatio(dpr);renderer.setSize(width,height,false);shared.uDpr.value=dpr;requestRender();
 }
 function render(time){
- frame=0;if(!loaded||document.hidden)return;
+ frame=0;if(document.hidden)return;
+ // Commit CSS and shader colors in the same frame, before drawing the brain.
+ applyPalette(progress);
+ if(!loaded)return;
  const dt=Math.min((time-last)/1000||.016,.06);last=time;
  const animated=$('motion').checked&&!reduced.matches;
  current=animated?THREE.MathUtils.lerp(current,progress,1-Math.exp(-dt*9)):Math.round(progress);
@@ -200,9 +203,10 @@ function render(time){
 }
 async function init(){
  try{
- renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'low-power'});
- renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.setClearColor(paper);
- scene=new THREE.Scene();scene.background=paper;
+ renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'low-power'});
+ renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.setClearColor(0x000000,0);
+ // The page supplies one continuous background, including behind the brain.
+ scene=new THREE.Scene();
  camera=new THREE.OrthographicCamera(-3,3,3,-3,.1,30);camera.position.set(0,.15,8);camera.lookAt(0,0,0);
  group=new THREE.Group();scene.add(group);
  const gltf=await new GLTFLoader().loadAsync('./assets/brain.glb',event=>{if(event.total)loading.textContent='Chargement du cerveau · '+Math.round(event.loaded/event.total*100)+' %';});
@@ -247,7 +251,7 @@ addEventListener('resize',()=>{stopWheel();lastWidth=journey.clientWidth;setTime
 document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(frame);frame=0;stopWheel();}else{last=performance.now();requestRender();}});
 for(const id of ['pattern','dotSize','contrast','ink','paper','accent','highlight','motion','autoPalette','autoRotate'])$(id).addEventListener('input',()=>{
  if(['ink','paper','accent'].includes(id)){$('autoPalette').checked=false;activePalette=-1;}
- if(id==='autoPalette'){activePalette=-1;applyPalette(progress);}
+ if(id==='autoPalette')activePalette=-1;
  shared.uPattern.value=+$('pattern').value;shared.uSize.value=+$('dotSize').value;shared.uContrast.value=+$('contrast').value;
  if(!$('autoPalette').checked){paper.set($('paper').value);ink.set($('ink').value);accent.set($('accent').value);for(const color of ['ink','paper','accent'])document.documentElement.style.setProperty('--'+color,$(color).value);}
  $('sizeValue').textContent=$('dotSize').value+' px';requestRender();
