@@ -1,0 +1,5 @@
+Model: https://github.com/organui/brain-3d
+Commit: e2f8c172716d8f4e8db6080b7d23f38fabe3add8
+BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International.
+https://creativecommons.org/licenses/by/4.0/
+Modifications: custom material and illustrative region colors; model geometry unchanged.
