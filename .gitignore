@@ -1,4 +1,7 @@
-README.md
 Trame-Studio.html
 .idea/
 .xml
+work/
+node_modules/
+.DS_Store
+README.md

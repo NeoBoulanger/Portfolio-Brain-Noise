@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Compétences — Brain / Noise</title>
+    <meta
+      name="description"
+      content="Un atelier interactif pour explorer le rôle de HTML, CSS et JavaScript."
+    />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/skills-standalone.css" />
+    <link rel="stylesheet" href="../assets/css/skills.css" />
+    <link rel="stylesheet" href="../assets/css/brain-navigation.css" />
+    <script type="module" src="../src/js/skills/workshop.js"></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="../index.html#competences">BRAIN / NOISE</a
+      ><a class="back" href="../index.html#competences">← RETOUR AU CERVEAU</a>
+    </header>
+    <main class="skills-main">
+      <div class="skills-layout">
+        <aside class="skills-directory">
+          <div class="brain-space" aria-hidden="true"></div>
+          <p class="eyebrow">LE RÉPERTOIRE</p>
+          <a class="domain-current" href="#web-title"
+            ><span>01</span> Développement web <span>↗</span></a
+          >
+          <p class="directory-note">D’autres savoir-faire<br />à explorer prochainement.</p>
+          <button type="button" data-back-to-brain class="back-to-brain">
+            ← Retour à l’exploration
+          </button>
+        </aside>
+        <div class="skills-content">
+          <div class="intro">
+            <div>
+              <p class="eyebrow">02 / MES COMPÉTENCES</p>
+              <h1 tabindex="-1">Les idées.<br /><em>En pratique.</em></h1>
+            </div>
+            <p>Faites défiler les idées.<br />Observez. Puis prenez la main.</p>
+          </div>
+          <section class="lab" aria-labelledby="web-title">
+            <div class="lab-heading">
+              <div>
+                <p class="eyebrow">01 / L’ATELIER INTERACTIF</p>
+                <h2 id="web-title">Développement web<span>.</span></h2>
+              </div>
+              <button type="button" id="reset">Tout éteindre ↺</button>
+            </div>
+            <div class="skills-story">
+              <div class="story-narrative" aria-label="Les étapes du développement web">
+                <article class="story-step" data-skill-step="0">
+                  <p class="eyebrow">01 / HTML</p>
+                  <h3>D’abord,<br />une structure.</h3>
+                  <p>
+                    Un élément entre dans la page. Il existe, mais son apparence reste
+                    volontairement simple.
+                  </p>
+                  <span class="step-foot">LE CARRÉ APPARAÎT →</span>
+                </article>
+                <article class="story-step" data-skill-step="1">
+                  <p class="eyebrow">02 / CSS</p>
+                  <h3>Puis,<br />du caractère.</h3>
+                  <p>
+                    La même structure change d’allure. Une classe ajoute les couleurs, la
+                    composition et les détails.
+                  </p>
+                  <span class="step-foot">L’APPARENCE SE CONSTRUIT →</span>
+                </article>
+                <article class="story-step" data-skill-step="2">
+                  <p class="eyebrow">03 / JAVASCRIPT</p>
+                  <h3>Enfin,<br />une réaction.</h3>
+                  <p>
+                    Le mouvement devient une information. Déplacez votre curseur sur la carte : elle
+                    s’incline vers vous.
+                  </p>
+                  <span class="step-foot">À VOUS DE BOUGER →</span>
+                </article>
+                <article class="story-step story-free" data-skill-step="3">
+                  <p class="eyebrow">04 / À VOUS DE JOUER</p>
+                  <h3>Et si vous<br />changiez tout ?</h3>
+                  <p>
+                    Les trois langages sont réunis. Éteignez un interrupteur, combinez les autres et
+                    observez ce qui reste.
+                  </p>
+                  <span class="step-foot">EXPÉRIMENTEZ LIBREMENT ↗</span>
+                </article>
+              </div>
+              <div class="story-scene">
+                <div class="story-follow">
+                  <span id="follow-label" role="status">LE SCROLL CONSTRUIT LA DÉMO</span
+                  ><button type="button" id="follow-scroll" hidden>Reprendre le récit ↺</button>
+                </div>
+                <div class="lab-body">
+                  <div class="controls">
+                    <p class="instruction">Trois langages.<br />Trois façons d’agir.</p>
+                    <label class="language"
+                      ><span class="language-title"
+                        ><span><small>01 / STRUCTURE</small><strong>HTML</strong></span
+                        ><input
+                          type="checkbox"
+                          id="html-toggle"
+                          aria-describedby="html-description" /><span
+                          class="switch"
+                          aria-hidden="true"
+                        ></span></span
+                      ><span id="html-description" class="description"
+                        >Activez pour créer l’élément. Un carré blanc apparaît.</span
+                      ></label
+                    >
+                    <label class="language"
+                      ><span class="language-title"
+                        ><span><small>02 / APPARENCE</small><strong>CSS</strong></span
+                        ><input
+                          type="checkbox"
+                          id="css-toggle"
+                          aria-describedby="css-description" /><span
+                          class="switch"
+                          aria-hidden="true"
+                        ></span></span
+                      ><span id="css-description" class="description"
+                        >Activez pour appliquer le style. Couleurs, composition et détails prennent
+                        forme.</span
+                      ></label
+                    >
+                    <label class="language"
+                      ><span class="language-title"
+                        ><span><small>03 / INTERACTION</small><strong>JavaScript</strong></span
+                        ><input
+                          type="checkbox"
+                          id="js-toggle"
+                          aria-describedby="js-description" /><span
+                          class="switch"
+                          aria-hidden="true"
+                        ></span></span
+                      ><span id="js-description" class="description"
+                        >Activez pour relier le mouvement à l’image. Le carré suit votre
+                        curseur.</span
+                      ></label
+                    >
+                    <p class="dependency" id="dependency">
+                      Commencez par HTML pour créer votre élément.
+                    </p>
+                  </div>
+                  <div class="experiment">
+                    <div class="stage-bar">
+                      <span>LE RÉSULTAT, EN DIRECT</span><span id="mode-label">EN ATTENTE</span>
+                    </div>
+                    <div
+                      class="stage"
+                      id="stage"
+                      tabindex="0"
+                      role="region"
+                      aria-label="Zone interactive du carré"
+                      aria-describedby="stage-help"
+                    >
+                      <div class="stage-cross cross-top" aria-hidden="true">＋</div>
+                      <div class="stage-cross cross-bottom" aria-hidden="true">＋</div>
+                      <div id="object-mount"></div>
+                      <div class="empty" id="empty">
+                        <span class="empty-symbol" aria-hidden="true">[ &nbsp; ]</span>
+                        <p>Tout commence<br />par une structure.</p>
+                        <small>ACTIVEZ HTML POUR COMMENCER</small>
+                      </div>
+                    </div>
+                    <div class="stage-footer">
+                      <p id="stage-help">
+                        Activez HTML, puis explorez CSS et JavaScript dans l’ordre de votre choix.
+                      </p>
+                      <span id="coordinates" aria-hidden="true">X 0° / Y 0°</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="story-position" aria-label="Progression de l’expérience">
+                  <span id="story-progress">00 / 04</span
+                  ><span class="story-progress-track"><i id="story-progress-fill"></i></span
+                  ><span>FAITES DÉFILER POUR DÉCOUVRIR ↓</span>
+                </div>
+              </div>
+            </div>
+            <details class="implementation">
+              <summary>Comprendre ce qui se passe <span>＋</span></summary>
+              <div class="under-the-hood">
+                <div>
+                  <p class="eyebrow">CE QUI CHANGE</p>
+                  <p id="explanation" role="status" aria-live="polite">
+                    Sans HTML, aucun élément à afficher. CSS et JavaScript peuvent être activés en
+                    avance : ils attendront la structure.
+                  </p>
+                </div>
+                <pre
+                  aria-label="Extrait de code correspondant aux interrupteurs"
+                ><code id="code">// Activez un langage pour découvrir son rôle.</code></pre>
+              </div>
+            </details>
+          </section>
+          <p class="closing">
+            Une même base. Une apparence. Un comportement.<span>Tout se construit ensemble.</span>
+          </p>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <span>COMPÉTENCES / DÉVELOPPEMENT WEB</span
+      ><a href="../index.html#competences">REVENIR À L’EXPLORATION ↗</a>
+    </footer>
+  </body>
+</html>
